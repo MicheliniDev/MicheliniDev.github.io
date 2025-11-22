@@ -9,19 +9,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
-        /* ============================
-           THEME: "Stealth Industrial"
-           ============================ */
         :root {
-            --bg-main: #121212;       /* Pure dark grey/black */
-            --bg-surface: #1e1e1e;    /* Slightly lighter for cards */
+            --bg-main: #121212;       
+            --bg-surface: #1e1e1e;   
             --bg-overlay: rgba(18, 18, 18, 0.95); 
             
-            --text-primary: #e0e0e0;  /* Off-white */
-            --text-secondary: #888888; /* Dim grey */
+            --text-primary: #e0e0e0;  
+            --text-secondary: #888888; 
             
-            /* The "Greyer" Accent */
-            --accent: #a0a0a0;        /* Platinum / Silver */
+            --accent: #a0a0a0;        
             --accent-glow: rgba(255, 255, 255, 0.1);
             --border: #333333;        
             
@@ -41,7 +37,6 @@
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -62,7 +57,7 @@
             letter-spacing: -1px;
             color: var(--text-primary);
         }
-        .logo span { color: var(--text-secondary); } /* Subtle two-tone */
+        .logo span { color: var(--text-secondary); }
 
         .nav-links { display: flex; gap: 30px; }
         .nav-links a {
@@ -74,12 +69,11 @@
         }
         .nav-links a:hover { color: var(--text-primary); }
 
-        /* Hero Section */
         .hero {
-            min-height: 90vh; /* Full screen height */
+            min-height: 90vh; 
             display: flex;
             align-items: center;
-            padding: 120px 10% 0 10%; /* Increased top padding for spacing */
+            padding: 120px 10% 0 10%; 
             position: relative;
             background: radial-gradient(circle at 70% 30%, #2a2a2a 0%, var(--bg-main) 60%);
         }
@@ -99,7 +93,7 @@
 
         .hero h1 .highlight {
             color: transparent;
-            -webkit-text-stroke: 1px var(--text-primary); /* Outline effect */
+            -webkit-text-stroke: 1px var(--text-primary); 
         }
         
         .hero p {
@@ -192,12 +186,11 @@
             color: #fff;
         }
 
-        /* Work / Modding Grid (Horizontal Aspect) */
         .work-section { padding: 80px 10%; }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates horizontal rows */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
             margin-top: 20px;
         }
@@ -346,7 +339,7 @@
         <span class="section-label">01 // LATEST RELEASE</span>
         
         <div class="featured-card">
-            <img src="https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Eduardo's+Awakening+Screenshot" alt="Eduardo's Awakening" class="featured-bg">
+            <img src="https://img.itch.zone/aW1hZ2UvMzk2OTM5Ni8yMzY3MjE1NS5wbmc=/original/j9PrN3.png" alt="Eduardo's Awakening" class="featured-bg">
             
             <div class="featured-info">
                 <h2>Eduardo's Awakening</h2>
@@ -373,8 +366,8 @@
                     <h3 class="project-title">Silksong: Karmelita Prime</h3>
                     <p class="project-desc">Complete boss AI rework. Decompiled game logic to inject new state machines for a "Prime" difficulty variant.</p>
                 </div>
-                <a href="https://thunderstore.io/c/hollow-knight-silksong/p/MicheliniDev/KarmelitaPrime/" target="_blank" class="project-link">
-                    VIEW MOD <i class="fas fa-arrow-right"></i>
+                <a href="https://github.com/MicheliniDev/KarmelitaPrime" target="_blank" class="project-link">
+                    VIEW CODE <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
@@ -386,9 +379,9 @@
                     </div>
                     <span class="project-tag">Pioneer Project</span>
                     <h3 class="project-title">Nine Sols: Eigong Prime</h3>
-                    <p class="project-desc">The first-ever modded boss for Nine Sols. I cracked the behavior trees to overhaul the final boss, setting the standard.</p>
+                    <p class="project-desc">The first-ever modded boss for Nine Sols. I cracked the behavior logic to overhaul the final boss.</p>
                 </div>
-                <a href="https://github.com/MicheliniDev" target="_blank" class="project-link">
+                <a href="https://github.com/MicheliniDev/NineSolsEigongPrimeMod" target="_blank" class="project-link">
                     VIEW CODE <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -401,7 +394,7 @@
                     </div>
                     <span class="project-tag">Runtime Injection</span>
                     <h3 class="project-title">Nine Sols: Systems</h3>
-                    <p class="project-desc">Hooked into the rendering pipeline to display real-time HP and Grade analytics without performance overhead.</p>
+                    <p class="project-desc">Hooked into the game's code to display real-time HP and Grade analytics.</p>
                 </div>
                 <a href="https://github.com/MicheliniDev/NineSols-HPNumbersMod" target="_blank" class="project-link">
                     VIEW CODE <i class="fas fa-arrow-right"></i>
@@ -411,13 +404,16 @@
             <div class="project-card">
                 <div>
                     <div class="project-header">
-                        <span class="project-year">UPCOMING</span>
+                        <span class="project-year">2024</span>
                         <i class="fas fa-box-open project-icon"></i>
                     </div>
                     <span class="project-tag">Tool Development</span>
-                    <h3 class="project-title">Unity Asset Pack</h3>
-                    <p class="project-desc">Modular system tools for Unity developers, focusing on plug-and-play architecture.</p>
+                    <h3 class="project-title">Unity Scriptable State Machine</h3>
+                    <p class="project-desc">Modular FSM system for Unity developers, focusing on inspector-friendliness and enabling building complex behaviors.</p>
                 </div>
+                <a href="https://assetstore.unity.com/preview/346198/1176698" target="_blank" class="project-link">
+                    ASSET STORE LINK <i class="fas fa-arrow-right"></i>
+                </a>
                 <span class="project-link" style="opacity: 0.5;">IN DEVELOPMENT</span>
             </div>
 
@@ -430,9 +426,9 @@
             <div class="code-snippet">
                 <span class="code-keyword">using</span> UnityEngine;<br>
                 <span class="code-keyword">public class</span> <span class="code-string">Skills</span> : MonoBehaviour {<br>
-                &nbsp;&nbsp;var engine = "Unity 2D/3D";<br>
-                &nbsp;&nbsp;var physics = "Custom & Built-in";<br>
-                &nbsp;&nbsp;var systems = "ECS & OOP";<br>
+                &nbsp;&nbsp;string engine = "Unity 2D/3D";<br>
+                &nbsp;&nbsp;string physics = "Custom & Built-in";<br>
+                &nbsp;&nbsp;string systems = "ECS & OOP";<br>
                 }
             </div>
         </div>
@@ -443,6 +439,7 @@
                 &nbsp;&nbsp;<span class="code-keyword">string</span> lang = "C# (Advanced)";<br>
                 &nbsp;&nbsp;<span class="code-keyword">string</span> tools = "Harmony, BepInEx";<br>
                 &nbsp;&nbsp;<span class="code-keyword">string</span> vcs = "Git / GitHub";<br>
+                &nbsp;&nbsp;<span class="code-keyword">string</span> dbs = "MySQL";<br>
                 }
             </div>
         </div>
