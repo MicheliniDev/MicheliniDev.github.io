@@ -1,229 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
 :root {
-  /* Minimalist Palette: "Matte Black & Electric Violet" */
-  --bg-color: #111111;       /* Darker, flatter background */
-  --card-bg: #1a1a1a;        /* Subtle contrast for cards */
-  --accent: #8b5cf6;         /* A modern, sophisticated violet */
-  --text-main: #ffffff;
-  --text-sub: #a1a1a1;       /* Muted gray for secondary text */
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --transition: all 0.3s ease;
+    --bg-main: #050505;
+    --bg-surface: #121212;
+    --accent: #d4ff00; /* Cyberpunk Acid Green - distinct, artistic, minimalist */
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
 }
 
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
-        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: var(--font-main);
-  overflow-x: hidden;
-  line-height: 1.7; /* Increased line-height for readability */
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Subtle noise texture for artistic feel */
+    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 60%);
 }
 
-/* --- Utilities --- */
-a { text-decoration: none; transition: var(--transition); }
-ul { list-style: none; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-/* --- Navbar --- */
+/* --- Navigation (Floating) --- */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 10%; /* Increased padding for minimalism */
-  position: absolute; /* Non-sticky for cleaner feel */
-  width: 100%;
-  top: 0;
-  z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--text-main);
-}
-
-.logo span { color: var(--accent); }
-  
-.nav-links a {
-  color: var(--text-sub);
-  font-size: 0.95rem;
-  margin-left: 30px;
-}
-
-.nav-links a:hover { color: var(--text-main); }
-
-/* --- Hero Section --- */
-.hero {
-    min-height: 90vh; /* Slightly less than full height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start; /* Left aligned is more "modern minimalist" */
-    padding: 0 10%;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
     letter-spacing: -1px;
 }
 
-.hero h1 span { color: var(--accent); }
+.logo span { color: var(--accent); }
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--accent); }
+
+/* --- Hero Section (Asymmetrical) --- */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    line-height: 0.9;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero h1 .highlight {
+    -webkit-text-stroke: 1px var(--text-primary);
+    color: transparent; /* Outline text effect */
+}
 
 .hero p {
-  font-size: 1.1rem;
-  color: var(--text-sub);
-  max-width: 500px;
-  margin-bottom: 40px;
-  font-weight: 400;
+    font-family: var(--font-code);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
 }
 
-/* Minimalist Buttons */
-.btn-container { display: flex; gap: 20px; }
-
-.btn {
-  padding: 12px 28px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 6px; /* Less rounded than before */
+/* --- Featured Game (The "Artistic" Centerpiece) --- */
+.featured-section {
+    padding: 0 5%;
+    margin-bottom: 100px;
 }
 
-.btn-primary {
-  background: var(--text-main);
-  color: var(--bg-color);
-}
-.btn-primary:hover { background: var(--accent); color: white; }
-
-.btn-secondary {
-  border: 1px solid rgba(255,255,255,0.2);
-  color: var(--text-main);
-}
-.btn-secondary:hover { border-color: var(--text-main); }
-
-/* --- Stats (Simplified) --- */
-.stats-bar {
-  display: flex;
-  gap: 80px;
-  padding: 0 10% 80px 10%;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.stat-item { text-align: left; }
-.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--text-main); line-height: 1; margin-bottom: 5px; }
-.stat-label { font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; }
-
-/* --- Projects --- */
-.section { padding: 100px 10%; }
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 60px;
-}
-
-.section-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
-.section-subtitle { color: var(--text-sub); font-size: 0.9rem; }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-}
-
-.card {
-  background: transparent; /* Removed card background for cleaner look */
-  border-radius: 0;
-  overflow: hidden;
-  transition: var(--transition);
-  border-bottom: 1px solid rgba(255,255,255,0.1); /* Only bottom border */
-  padding-bottom: 30px;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-}
-
-/* Image styling for screenshots */
-.card-image {
-    width: 100%;
-    height: 200px;
-    background-color: #2a2a2a; /* Placeholder color */
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.card:hover .card-image img { transform: scale(1.05); }
-
-.card-tag {
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-main); }
-.card p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 20px; }
-        
-.card-links a {
-  color: var(--text-main);
-  margin-right: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-.card-links a:hover { color: var(--accent); }
-
-/* --- Skills (Tag Cloud style) --- */
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.tech-pill {
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--text-sub);
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-
-.tech-pill:hover {
-    border-color: var(--accent);
+.section-label {
+    font-family: var(--font-code);
     color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+    font-size: 0.8rem;
 }
 
+.featured-card {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Big cinematic banner */
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    background: #222; /* Fallback */
+}
+
+/* This handles the background image for the featured game */
+.featured-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: 0.5s;
+    /* Grayscale by default, color on hover - very "artistic" */
+    filter: grayscale(100%);
+}
+
+.featured-card:hover .featured-bg {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+    opacity: 0.8;
+}
+
+.featured-info {
+    position: relative;
+    z-index: 10;
+    padding: 40px;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+    width: 100%;
+}
+
+.featured-info h2 { font-size: 3rem; margin-bottom: 10px; }
+.featured-info p { max-width: 600px; color: #ccc; margin-bottom: 20px; }
+
+.btn-play {
+    display: inline-block;
+    padding: 10px 30px;
+    background: var(--text-primary);
+    color: #000;
+    font-weight: 700;
+    font-family: var(--font-code);
+    border-radius: 0; /* Boxy = Brutalist/Minimal */
+}
+.btn-play:hover { background: var(--accent); }
+
+/* --- Modding / Secondary Projects (List Style) --- */
+.work-section { padding: 0 10% 100px 10%; }
+
+.project-list {
+    border-top: 1px solid #222;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 40px 0;
+    border-bottom: 1px solid #222;
+    align-items: baseline;
+    transition: 0.3s;
+}
+
+.project-item:hover {
+    border-color: var(--text-primary);
+}
+
+.project-year { font-family: var(--font-code); color: var(--text-secondary); }
+.project-title h3 { font-size: 1.5rem; margin-bottom: 5px; }
+.project-title span { font-size: 0.9rem; color: var(--accent); font-family: var(--font-code); }
+.project-desc { color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px; max-width: 90%; }
+.project-link { text-align: right; }
+
+/* --- Skills (Code Snippet Style) --- */
+.skills-section {
+    padding: 0 10% 100px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.skill-block h3 { margin-bottom: 20px; font-size: 2rem; }
+
+.code-snippet {
+    font-family: var(--font-code);
+    background: #111;
+    padding: 20px;
+    border-left: 1px solid var(--accent);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.code-keyword { color: var(--accent); }
+.code-string { color: #fff; }
+
+/* --- Footer --- */
 footer {
-  padding: 80px 10%;
-  color: var(--text-sub);
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 50px 10%;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
-  .hero { align-items: center; text-align: center; padding-top: 100px; }
-  .stats-bar { flex-direction: column; align-items: center; gap: 40px; text-align: center; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .nav-links { display: none; } 
-  .stat-item { text-align: center; }
+    .hero h1 { font-size: 3rem; }
+    .project-item { grid-template-columns: 1fr; gap: 15px; }
+    .project-link { text-align: left; }
+    .skills-section { grid-template-columns: 1fr; }
+    .featured-card { height: 50vh; }
 }
