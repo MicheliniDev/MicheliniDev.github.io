@@ -3,122 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicheliniDev | Portfolio</title>
+    <title>MicheliniDev | Game Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+        /* ============================
+           CSS STYLES ("The Blueprint")
+           ============================ */
+        :root {
+            /* Deep Blue/Grey Technical Theme */
+            --bg-main: #1a1b26;       
+            --bg-surface: #24283b;    
+            --bg-overlay: rgba(36, 40, 59, 0.95); 
+            
+            --text-primary: #c0caf5;  
+            --text-secondary: #565f89; 
+            
+            --accent: #7aa2f7;        /* Electric Blue */
+            --accent-glow: rgba(122, 162, 247, 0.2);
+            --border: #414868;        
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            background-image: radial-gradient(circle at 80% 20%, var(--bg-surface) 0%, var(--bg-main) 50%);
+            margin-top: 60px; /* Offset for fixed nav */
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 0.95;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent);
+        }
+        
+        .hero h1 .highlight:hover {
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .hero p {
+            font-family: var(--font-code);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* Featured Game Section (Eduardo) */
+        .featured-section { padding: 0 5%; margin-bottom: 120px; }
+
+        .section-label {
+            font-family: var(--font-code);
+            color: var(--accent);
+            margin-bottom: 25px;
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .featured-card {
+            position: relative;
+            width: 100%;
+            height: 65vh; 
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
+        }
+
+        /* NOTE: Ensure you have an image named 'eduardo_bg.jpg' 
+           or change the src below. 
+        */
+        .featured-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            filter: grayscale(80%) contrast(1.2);
+        }
+
+        .featured-card:hover .featured-bg {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        .featured-info {
+            position: relative;
+            z-index: 10;
+            padding: 50px;
+            background: linear-gradient(to top, var(--bg-main) 0%, rgba(26,27,38,0) 100%);
+            width: 100%;
+        }
+
+        .featured-info h2 { 
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            color: var(--text-primary);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .featured-info p { 
+            max-width: 600px; 
+            color: #fff; 
+            margin-bottom: 25px; 
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 35px;
+            background: var(--accent);
+            color: var(--bg-main);
+            font-weight: 700;
+            font-family: var(--font-code);
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-play:hover { 
+            background: var(--text-primary); 
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* Work / Modding List Section */
+        .work-section { padding: 0 10% 120px 10%; }
+
+        .project-list { border-top: 1px solid var(--border); }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 0.5fr 3fr 1fr;
+            padding: 45px 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+            transition: 0.3s;
+        }
+
+        .project-item:hover {
+            background: var(--bg-surface);
+            padding-left: 20px;
+            border-color: var(--accent);
+        }
+
+        .project-year { font-family: var(--font-code); color: var(--text-secondary); }
+
+        .project-title h3 { 
+            font-size: 1.8rem; 
+            margin-bottom: 8px; 
+            color: var(--text-primary);
+        }
+
+        .project-title span { 
+            font-size: 0.8rem; 
+            color: var(--accent); 
+            font-family: var(--font-code);
+            background: var(--accent-glow);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .project-desc { 
+            color: var(--text-secondary); 
+            font-size: 1rem; 
+            margin-top: 15px; 
+            max-width: 80%; 
+        }
+
+        .project-link { text-align: right; }
+        
+        .project-link a {
+            color: var(--text-primary);
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .project-link a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 0 10% 120px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .skill-block h3 { 
+            margin-bottom: 25px; 
+            font-size: 2rem; 
+            color: var(--text-primary);
+        }
+
+        .code-snippet {
+            font-family: var(--font-code);
+            background: var(--bg-surface);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .code-keyword { color: #ff9e64; }
+        .code-string { color: #9ece6a; }
+
+        /* Footer */
+        footer {
+            padding: 60px 10%;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: var(--bg-main);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .project-item { grid-template-columns: 1fr; gap: 20px; }
+            .project-link { text-align: left; margin-top: 10px;}
+            .skills-section { grid-template-columns: 1fr; }
+            .featured-card { height: 50vh; }
+            .nav-links { display: none; } 
+        }
+    </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Michelini<span>Dev</span></div>
         <div class="nav-links">
-            <a href="#projects">Work</a>
-            <a href="#skills">Skills</a>
-            <a href="https://github.com/MicheliniDev" target="_blank">GitHub</a>
-            <a href="https://michelinidev.itch.io/" target="_blank">Itch.io</a>
+            <a href="#work">Work</a>
+            <a href="https://github.com/MicheliniDev" target="_blank">GH</a>
+            <a href="https://michelinidev.itch.io/" target="_blank">ITCH</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>Building the Future<br>of <span>Game Modification</span></h1>
-        <p>
-            Unity Developer & Reverse Engineering Specialist.<br>
-            Creator of <i>Eduardo's Awakening</i> and revolutionary mods for Nine Sols & Hollow Knight: Silksong.
-        </p>
-        <div class="btn-container">
-            <a href="#projects" class="btn btn-primary">See Projects</a>
-            <a href="https://michelinidev.itch.io/" target="_blank" class="btn btn-secondary">
-                <i class="fab fa-itch-io"></i> Itch.io
-            </a>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>
+                GAME DEV<br>
+                <span class="highlight">MODDER</span><br>
+                ARTIST
+            </h1>
+            <p>
+                // Creating immersive experiences in Unity. <br>
+                Specialized in reverse engineering & system architecture.
+            </p>
         </div>
-    </section>
+    </header>
 
-    <div class="stats-bar">
-        <div class="stat-item">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Mods Published</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">Unity</div>
-            <div class="stat-label">Engine Mastery</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">3+</div>
-            <div class="stat-label">Years Experience</div>
-        </div>
-    </div>
-
-    <section id="projects" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Selected Works</h2>
-            <span class="section-subtitle">A mix of original titles and technical mods.</span>
-        </div>
+    <section id="work" class="featured-section">
+        <span class="section-label">01 // LATEST RELEASE</span>
         
-        <div class="grid">
+        <div class="featured-card">
+            <img src="https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Eduardo's+Awakening+Screenshot" alt="Eduardo's Awakening" class="featured-bg">
             
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://via.placeholder.com/600x400/2a2a2a/ffffff?text=Eduardo's+Awakening+Screenshot" alt="Eduardo's Awakening Gameplay">
-                </div>
-                <div class="card-content">
-                    <span class="card-tag">Original Game</span>
-                    <h3>Eduardo's Awakening</h3>
-                    <p>
-                        A 2D platformer showcasing my ability to build complete game loops from scratch. Features custom physics interactions and polished level design.
-                    </p>
-                    <div class="card-links">
-                        <a href="https://michelinidev.itch.io/eduardos-awakening" target="_blank">Play on Itch.io <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+            <div class="featured-info">
+                <h2>Eduardo's Awakening</h2>
+                <p>A 2D platformer built from the ground up. Features custom physics, hand-crafted levels, and a complete game loop.</p>
+                <a href="https://michelinidev.itch.io/eduardos-awakening" target="_blank" class="btn-play">
+                    PLAY ON ITCH.IO <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
+        </div>
+    </section>
 
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-tag">Reverse Engineering</span>
+    <section class="work-section">
+        <span class="section-label">02 // TECHNICAL MODS & TOOLS</span>
+        
+        <div class="project-list">
+            
+            <div class="project-item">
+                <div class="project-year">2024</div>
+                <div class="project-title">
                     <h3>Silksong: Karmelita Prime</h3>
-                    <p>
-                        A complex boss rework. Reverse-engineered enemy behaviors to create a "Prime" version of Skarrsinger Karmelita, pushing combat mechanics to limits.
-                    </p>
-                    <div class="card-links">
-                        <a href="https://thunderstore.io/c/hollow-knight-silksong/p/MicheliniDev/KarmelitaPrime/" target="_blank">View Mod <i class="fas fa-external-link-alt"></i></a>
-                    </div>
+                    <span>REVERSE ENGINEERING</span>
+                    <p class="project-desc">Complete boss AI rework. Decompiled game logic to inject new state machines for a "Prime" difficulty variant.</p>
+                </div>
+                <div class="project-link">
+                    <a href="https://thunderstore.io/c/hollow-knight-silksong/p/MicheliniDev/KarmelitaPrime/" target="_blank">VIEW MOD</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-tag">System Injection</span>
-                    <h3>Nine Sols: HP & Grading</h3>
-                    <p>
-                        Hooked into the game's rendering pipeline and state management systems to display real-time HP data and grading without performance loss.
-                    </p>
-                    <div class="card-links">
-                        <a href="https://github.com/MicheliniDev/NineSols-HPNumbersMod" target="_blank">Source Code <i class="fab fa-github"></i></a>
-                    </div>
+            <div class="project-item">
+                <div class="project-year">2024</div>
+                <div class="project-title">
+                    <h3>Nine Sols: Eigong Prime</h3>
+                    <span>PIONEER PROJECT</span>
+                    <p class="project-desc">The first-ever modded boss for Nine Sols. I cracked the game's behavior trees to overhaul the final boss, setting the standard for the modding community.</p>
+                </div>
+                <div class="project-link">
+                    <a href="https://github.com/MicheliniDev" target="_blank">VIEW CODE</a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-year">2024</div>
+                <div class="project-title">
+                    <h3>Nine Sols: Systems</h3>
+                    <span>RUNTIME INJECTION</span>
+                    <p class="project-desc">Hooked into rendering pipeline to display real-time HP and Grade analytics without performance overhead.</p>
+                </div>
+                <div class="project-link">
+                    <a href="https://github.com/MicheliniDev/NineSols-HPNumbersMod" target="_blank">VIEW CODE</a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-year">UPCOMING</div>
+                <div class="project-title">
+                    <h3>Unity Asset Pack</h3>
+                    <span>TOOL DEVELOPMENT</span>
+                    <p class="project-desc">Modular system tools for Unity developers, focusing on plug-and-play architecture.</p>
+                </div>
+                <div class="project-link">
+                    <a href="#" style="opacity: 0.5; pointer-events: none;">IN DEV</a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section id="skills" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Technical Arsenal</h2>
+    <section class="skills-section">
+        <div class="skill-block">
+            <h3>Engine</h3>
+            <div class="code-snippet">
+                <span class="code-keyword">using</span> UnityEngine;<br>
+                <span class="code-keyword">public class</span> <span class="code-string">Skills</span> : MonoBehaviour {<br>
+                &nbsp;&nbsp;var engine = "Unity 2D/3D";<br>
+                &nbsp;&nbsp;var physics = "Custom & Built-in";<br>
+                &nbsp;&nbsp;var systems = "ECS & OOP";<br>
+                }
+            </div>
         </div>
-        <div class="tech-stack">
-            <div class="tech-pill">Unity 3D/2D</div>
-            <div class="tech-pill">C#</div>
-            <div class="tech-pill">Git / GitHub</div>
-            <div class="tech-pill">Game Design</div>
+        <div class="skill-block">
+            <h3>Language</h3>
+            <div class="code-snippet">
+                <span class="code-keyword">namespace</span> MicheliniDev {<br>
+                &nbsp;&nbsp;<span class="code-keyword">string</span> lang = "C# (Advanced)";<br>
+                &nbsp;&nbsp;<span class="code-keyword">string</span> tools = "Harmony, BepInEx";<br>
+                &nbsp;&nbsp;<span class="code-keyword">string</span> vcs = "Git / GitHub";<br>
+                }
+            </div>
         </div>
     </section>
 
     <footer>
-        <div>&copy; 2024 MicheliniDev</div>
-        <div style="display: flex; gap: 20px;">
-            <a href="https://github.com/MicheliniDev" style="color: inherit;"><i class="fab fa-github"></i></a>
-            <a href="https://michelinidev.itch.io/" style="color: inherit;"><i class="fab fa-itch-io"></i></a>
+        <div>MICHELINI.DEV &copy; 2024</div>
+        <div>
+            <a href="https://michelinidev.itch.io/" target="_blank">ITCH.IO</a> / 
+            <a href="https://github.com/MicheliniDev" target="_blank">GITHUB</a>
         </div>
     </footer>
 
