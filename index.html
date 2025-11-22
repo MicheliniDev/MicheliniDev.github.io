@@ -1,1 +1,143 @@
-<body><h1>peak</h1></body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicheliniDev | Unity Developer & Modder</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Michelini<span>Dev</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="https://github.com/MicheliniDev" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Building the Future of <br><span>Game Modification</span></h1>
+        <p>
+            Unity Game Developer & Reverse Engineering Specialist.<br>
+            I break games to make them better. Known for revolutionizing the 
+            Nine Sols and Hollow Knight: Silksong modding scenes.
+        </p>
+        <div>
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="https://github.com/MicheliniDev" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item" style="animation-delay: 0s;">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Mods Published</div>
+        </div>
+        <div class="stat-item" style="animation-delay: 1s;">
+            <div class="stat-number">Unity</div>
+            <div class="stat-label">Primary Engine</div>
+        </div>
+        <div class="stat-item" style="animation-delay: 2s;">
+            <div class="stat-number">C#</div>
+            <div class="stat-label">Language of Choice</div>
+        </div>
+    </div>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">Selected <span>Works</span></h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-tag">Modding Revolution</span>
+                    <h3>Silksong: Karmelita Prime</h3>
+                    <p>
+                        A complex boss rework for Hollow Knight: Silksong. I reverse-engineered enemy behaviors to create a "Prime" version of Skarrsinger Karmelita, pushing the combat mechanics to their limit.
+                    </p>
+                    <div class="tech-stack" style="justify-content: flex-start; margin-bottom: 15px;">
+                        <span class="tech-pill"><i class="fas fa-code"></i> C#</span>
+                        <span class="tech-pill"><i class="fas fa-tools"></i> Harmony</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://thunderstore.io/c/hollow-knight-silksong/p/MicheliniDev/KarmelitaPrime/" target="_blank" title="View Mod"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-tag">System Architecture</span>
+                    <h3>Nine Sols: HP & Grading</h3>
+                    <p>
+                        Developed "HPNumbers" and "BossGrades". These mods required hooking into the game's rendering pipeline and state management systems to display real-time data without performance loss.
+                    </p>
+                    <div class="tech-stack" style="justify-content: flex-start; margin-bottom: 15px;">
+                        <span class="tech-pill"><i class="fas fa-code"></i> C#</span>
+                        <span class="tech-pill"><i class="fas fa-cube"></i> Unity Injection</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/MicheliniDev/NineSols-HPNumbersMod" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-tag">Game Design</span>
+                    <h3>Upcoming Asset Creation</h3>
+                    <p>
+                        Leveraging my experience in modding existing architectures to create flexible, high-performance assets for other Unity developers. Focusing on modularity and ease of use.
+                    </p>
+                    <div class="tech-stack" style="justify-content: flex-start; margin-bottom: 15px;">
+                        <span class="tech-pill"><i class="fab fa-unity"></i> Unity</span>
+                        <span class="tech-pill"><i class="fas fa-cubes"></i> Asset Store</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" title="Coming Soon"><i class="fas fa-clock"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2 class="section-title">Technical <span>Arsenal</span></h2>
+        <div class="tech-stack">
+            <div class="tech-pill"><i class="fab fa-unity"></i> Unity 3D/2D</div>
+            <div class="tech-pill"><i class="fas fa-code"></i> C# (Advanced)</div>
+            <div class="tech-pill"><i class="fas fa-microchip"></i> Reverse Engineering</div>
+            <div class="tech-pill"><i class="fas fa-cogs"></i> Modding APIs (Harmony/BepInEx)</div>
+            <div class="tech-pill"><i class="fab fa-git-alt"></i> Git & Version Control</div>
+            <div class="tech-pill"><i class="fas fa-gamepad"></i> Gameplay Mechanics</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MicheliniDev. Built to break limits.</p>
+    </footer>
+
+    <script>
+        // Simple scroll reveal effect
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.card');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].style.opacity = '1';
+                    reveals[i].style.transform = 'translateY(0)';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
